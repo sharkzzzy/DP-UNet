@@ -1,0 +1,11 @@
+# 忽略大文件夹
+data/
+model_weights/
+
+# 忽略特定模型文件
+swin_tiny_patch4_window7_224.pth
+vmamba_tiny_e292.pth
+
+# 忽略Python缓存
+__pycache__/
+*.pyc
