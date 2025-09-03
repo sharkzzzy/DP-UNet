@@ -1,9 +1,11 @@
-# BiVSS-UNet
+# BiVSS-UNetThe main model architectures are located in:
 
 **BiVSS-UNet** is a deep learning framework for image segmentation, based on the U-Net architecture. The model is implemented in **PyTorch 2.6.0** with **CUDA 12.4** support, and optimized for high-performance GPU inference.
 
 ---
-The main model architectures are located in:BiVSS-UNet/geoseg/models/networks/mamba_sys.py
+The main model architectures are located in:
+👉 ([BiVSS-UNet/geoseg/models/networks/mamba_sys.py](https://github.com/sharkzzzy/BiVSS-UNet/blob/main/geoseg/models/networks/mamba_sys.py))
+
 
 ## 🚀 Features
 
@@ -45,6 +47,30 @@ You can find the full list in requirements.txt.
 ---
 
 
+The folder contains pre-segmented images for the following datasets:
+
+-**LoveDA**
+
+-**ISPRSPotsdam**
+
+-**ISPRSVaihingen**
+
+You can access and download the segmented images here:
+👉 ([Download from Google Drive](https://drive.google.com/drive/folders/1CrPBbs1I0oYRvyxqG68q5YX8l-KCLfh5?usp=sharing))
+
+---
+
+### ModelWeights
+
+Download the pretrained weightshere:
+
+-**vmamba_tiny_e292.pth**:
+[GoogleDriveLink](https://drive.google.com/file/d/1Vgh0pggmiNdgMswI_t318gGjkPeL6YrT/view?usp=sharing)
+
+-**swin_tiny_patch4_window7_224.pth**:
+[GoogleDriveLink](https://drive.google.com/file/d/1JOa1o4jVLJLssQE7PpvWlqtdJDWTMITs/view?usp=sharing)
+
+---
 ## 🧪 Usage
 
 ### 1. Install
@@ -98,6 +124,11 @@ bash test_vaihingen.sh #vaihingen
 ```bash
 model_weights/.../best.ckpt
 ```
+The trained model weights can be downloaded from the link below:
+
+👉 ([Download from Google Drive](https://drive.google.com/drive/folders/1_plPx7E8LWBu9u8j1IPwmmoZ7pNHPbIY?usp=sharing))
+
+These weights are ready to use for inference or fine-tuning.
 You can then use this checkpoint for inference. Make sure your testing script (e.g., loveda_test.py) specifies the path to the checkpoint.
 ---
 
