@@ -3,6 +3,7 @@
 **BiVSS-UNet** is a deep learning framework for image segmentation, based on the U-Net architecture. The model is implemented in **PyTorch 2.6.0** with **CUDA 12.4** support, and optimized for high-performance GPU inference.
 
 ---
+The main model architectures are located in:BiVSS-UNet/geoseg/models/networks/mamba_sys.py
 
 ## 🚀 Features
 
