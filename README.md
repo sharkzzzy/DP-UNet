@@ -83,4 +83,15 @@ bash run_vaihingen.sh #vaihingen
 
 ---
 
+## Acknowledgement
 
+Many thanks the following projects's contributions.
+- [CM-UNet](https://github.com/XiaoBuL/CM-UNet/tree/main)
+- [Mamba-UNet](https://github.com/ziyangwang007/Mamba-UNet)
+- [GeoSeg](https://github.com/WangLibo1995/GeoSeg)
+- [pytorch lightning](https://www.pytorchlightning.ai/)
+- [timm](https://github.com/rwightman/pytorch-image-models)
+- [pytorch-toolbelt](https://github.com/BloodAxe/pytorch-toolbelt)
+- [ttach](https://github.com/qubvel/ttach)
+- [catalyst](https://github.com/catalyst-team/catalyst)
+- [mmsegmentation](https://github.com/open-mmlab/mmsegmentation)
