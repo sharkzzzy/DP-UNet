@@ -81,6 +81,23 @@ bash run_potsdam.sh #potsdam
 bash run_vaihingen.sh #vaihingen
 ```
 
+### 3. Test the model
+
+```bash
+bash test_loveda.sh #loveda
+```
+```bash
+bash test_potsdam.sh #potsdam
+```
+```bash
+bash test_vaihingen.sh #vaihingen
+```
+
+### 4.Use Trained Model Weights for Inference
+```bash
+model_weights/.../best.ckpt
+```
+You can then use this checkpoint for inference. Make sure your testing script (e.g., loveda_test.py) specifies the path to the checkpoint.
 ---
 
 ## Acknowledgement
