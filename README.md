@@ -1,10 +1,10 @@
-# BiVSS-UNetThe main model architectures are located in:
+# DSMF-UNet: Enhancing UNet with Dual-Branch Decoder and Spatial Multiscale Fusion for Remote Sensing Semantic Segmentation:
 
-**BiVSS-UNet** is a deep learning framework for image segmentation, based on the U-Net architecture. The model is implemented in **PyTorch 2.6.0** with **CUDA 12.4** support, and optimized for high-performance GPU inference.
-
+**DSMF-UNet** is a deep learning framework for image segmentation, based on the U-Net architecture. The model is implemented in **PyTorch 2.6.0** with **CUDA 12.4** support, and optimized for high-performance GPU inference.
+> _Formerly known as **BiVSS-UNet**._
 ---
 The main model architectures are located in:
-👉 ([BiVSS-UNet/geoseg/models/networks/mamba_sys.py](https://github.com/sharkzzzy/BiVSS-UNet/blob/main/geoseg/models/networks/mamba_sys.py))
+👉 ([mamba_sys.py](https://github.com/sharkzzzy/BiVSS-UNet/blob/main/geoseg/models/networks/mamba_sys.py))
 
 
 ## 🚀 Features
