@@ -533,8 +533,7 @@ class LDC(nn.Module):
 
     def forward(self, x):
 
-        # (D,D,K,K)- theta * (D,D,1,1) * (K,K) * (D,D,1,1) = (D,D,K,K)
-        # theta * (D,D,1,1) * (K,K) * (D,D,1,1):  theta*(D,D,1,1)用于生成0-1之间的权重, 然后再与(K,K)相乘, 是为了调整卷积核最中心位置的权重, 最后再和(D,D,1,1)相乘, 这还是在调整卷积核最中心位置的权重, 只不过这次的权重来源于conv层卷积核数值的相加
+      
         mask = self.base_mask - self.learnable_theta * self.learnable_mask[:, :, None, None] * \
                self.center_mask * self.conv.weight.sum(2).sum(2)[:, :, None, None]
 
@@ -606,20 +605,15 @@ class VSSBlock(nn.Module):
 
     def forward(self, input: torch.Tensor):
 
-        # 右分支
-        x_ssm = self.drop_path(self.self_attention(self.ln_1(input)))  # 执行ESSM: (B,H,W,C)-->(B,H,W,C)
-        x_ = x_ssm.permute(0,3,1,2) # (B,H,W,C)-->(B,C,H,W)
-        x_ = self.self_attention_cross_channel(x_)  # 执行ECA:(B,C,H,W)
-        x_ = x_.permute(0, 2, 3, 1) # (B,C,H,W)-->(B,H,W,C)
-        x = x_ssm + x_ #右分支的残差连接
+        x_ssm = self.drop_path(self.self_attention(self.ln_1(input)))  
+        x_ = x_ssm.permute(0,3,1,2) 
+        x_ = self.self_attention_cross_channel(x_) 
+        x_ = x_.permute(0, 2, 3, 1) 
+        x = x_ssm + x_ 
 
-        # 左分支
-        x_conv = self.conv_branch(x.permute(0, 3, 1, 2)).permute(0, 2, 3, 1) # 在这里是把右分支的输出x输入到左分支的, 如果你要严格按照论文讲述的来做, 可以把x换成input: (B,H,W,C)-permute->(B,C,H,W)-conv->(B,C,H,W)-permute->(B,H,W,C)
+        x_conv = self.conv_branch(x.permute(0, 3, 1, 2)).permute(0, 2, 3, 1) 
+        x = self.se(x_ssm) + self.se(x_conv)
 
-        # 融合
-        x = self.se(x_ssm) + self.se(x_conv) # 实际这也是一个通道注意力层, 为两个分支都调整各自的特征表示: (B,H,W,C)-->(B,H,W,C)
-
-        # 添加残差连接
         x = input + self.drop_path(x) # (B,H,W,C)
 
         return x
