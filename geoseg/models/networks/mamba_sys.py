@@ -514,11 +514,11 @@ class SS2D(nn.Module):
         return out
 
 
-class LDC(nn.Module):
+class ELDC(nn.Module):
     def __init__(self, in_channels, out_channels, kernel_size=3, stride=1,
                  padding=1, dilation=1, groups=1, bias=False):
         # conv.weight.size() = [out_channels, in_channels, kernel_size, kernel_size]
-        super(LDC, self).__init__()
+        super(ELDC, self).__init__()
         self.conv = nn.Conv2d(in_channels, out_channels, kernel_size=kernel_size, stride=stride, padding=padding,
                               dilation=dilation, groups=groups, bias=bias)  # kernel_size: (3,3)  weight:(D,D,K,K),D=channels,K=kernel-size; 在这里默认 D== in_channels == out_channels
 
@@ -599,7 +599,7 @@ class VSSBlock(nn.Module):
         self.ln_1 = norm_layer(hidden_dim)
         self.self_attention = SS2D(d_model=hidden_dim, dropout=attn_drop_rate, d_state=d_state, **kwargs)
         self.drop_path = DropPath(drop_path)
-        self.conv_branch = LDC(hidden_dim, hidden_dim)
+        self.conv_branch = ELDC(hidden_dim, hidden_dim)
         self.self_attention_cross_channel = eca_layer(channel=hidden_dim)
         self.se = ACGM(hidden_dim)
 
