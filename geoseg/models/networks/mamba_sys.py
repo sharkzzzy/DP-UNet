@@ -560,7 +560,7 @@ class eca_layer(nn.Module):
         return out
 
 
-class BiAttn(nn.Module):
+class ACGM(nn.Module):
     def __init__(self, in_channels, act_ratio=0.125, act_fn=nn.GELU, gate_fn=nn.Sigmoid):
         super().__init__()
         reduce_channels = int(in_channels * act_ratio)
@@ -601,7 +601,7 @@ class VSSBlock(nn.Module):
         self.drop_path = DropPath(drop_path)
         self.conv_branch = LDC(hidden_dim, hidden_dim)
         self.self_attention_cross_channel = eca_layer(channel=hidden_dim)
-        self.se = BiAttn(hidden_dim)
+        self.se = ACGM(hidden_dim)
 
     def forward(self, input: torch.Tensor):
 
