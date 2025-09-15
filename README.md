@@ -3,7 +3,7 @@
 > _Formerly known as **BiVSS-UNet**._
 ---
 The main model architectures are located in:
-👉 ([mamba_sys.py](https://github.com/sharkzzzy/BiVSS-UNet/blob/main/geoseg/models/networks/mamba_sys.py))
+👉 ([mamba_sys.py](https://github.com/sharkzzzy/DP-UNet/blob/main/geoseg/models/networks/mamba_sys.py))
 
 
 ## 🚀 Features
@@ -72,8 +72,8 @@ Download the pretrained weightshere:
 ### 1. Install
 
 ```bash
-conda create -n bivss python=3.10
-conda activate bivss
+conda create -n DP python=3.10
+conda activate DP
 
 conda install -c nvidia cudatoolkit=12.4
 conda install -c "nvidia/label/cuda-12.4.0" cuda-nvcc
@@ -82,7 +82,7 @@ pip install torch==2.6.0+cu124 torchvision==0.21.0+cu124 torchaudio==2.6.0 -f ht
 
 conda install packaging
 
-cd BiVSS-UNet
+cd DP-UNet
 pip install -r requirements.txt
 
 cd geoseg/Mamba-UNet/mamba
