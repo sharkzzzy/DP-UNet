@@ -1,6 +1,5 @@
-# DSMF-UNet: Enhancing UNet with Dual-Branch Decoder and Spatially Aware Multiscale Fusion for Remote Sensing Semantic Segmentation
-
-**DSMF-UNet** is a deep learning framework for image segmentation, based on the U-Net architecture. The model is implemented in **PyTorch 2.6.0** with **CUDA 12.4** support, and optimized for high-performance GPU inference.
+# DP-UNet
+**DP-UNet** is a deep learning framework for image segmentation, based on the U-Net architecture. The model is implemented in **PyTorch 2.6.0** with **CUDA 12.4** support, and optimized for high-performance GPU inference.
 > _Formerly known as **BiVSS-UNet**._
 ---
 The main model architectures are located in:
@@ -66,9 +65,6 @@ Download the pretrained weightshere:
 
 -**vmamba_tiny_e292.pth**:
 [GoogleDriveLink](https://drive.google.com/file/d/1Vgh0pggmiNdgMswI_t318gGjkPeL6YrT/view?usp=sharing)
-
--**swin_tiny_patch4_window7_224.pth**:
-[GoogleDriveLink](https://drive.google.com/file/d/1JOa1o4jVLJLssQE7PpvWlqtdJDWTMITs/view?usp=sharing)
 
 ---
 ## 🧪 Usage
