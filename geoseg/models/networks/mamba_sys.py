@@ -320,8 +320,7 @@ class SS2D(nn.Module):
             padding=(d_conv - 1) // 2,
             **factory_kwargs,
         )
-      #  self.channel_attention = ChannelAttentionModule(self.d_inner)
-      #  self.spatial_attention = SpatialAttentionModule()
+
         self.act = nn.SiLU()
 
         self.x_proj = (
@@ -514,11 +513,11 @@ class SS2D(nn.Module):
         return out
 
 
-class ELDC(nn.Module):
+class PMC(nn.Module):
     def __init__(self, in_channels, out_channels, kernel_size=3, stride=1,
                  padding=1, dilation=1, groups=1, bias=False):
         # conv.weight.size() = [out_channels, in_channels, kernel_size, kernel_size]
-        super(ELDC, self).__init__()
+        super(PMC, self).__init__()
         self.conv = nn.Conv2d(in_channels, out_channels, kernel_size=kernel_size, stride=stride, padding=padding,
                               dilation=dilation, groups=groups, bias=bias)  # kernel_size: (3,3)  weight:(D,D,K,K),D=channels,K=kernel-size; 在这里默认 D== in_channels == out_channels
 
@@ -560,7 +559,7 @@ class eca_layer(nn.Module):
         return out
 
 
-class ACGM(nn.Module):
+class APFG(nn.Module):
     def __init__(self, in_channels, act_ratio=0.125, act_fn=nn.GELU, gate_fn=nn.Sigmoid):
         super().__init__()
         reduce_channels = int(in_channels * act_ratio)
@@ -599,9 +598,9 @@ class VSSBlock(nn.Module):
         self.ln_1 = norm_layer(hidden_dim)
         self.self_attention = SS2D(d_model=hidden_dim, dropout=attn_drop_rate, d_state=d_state, **kwargs)
         self.drop_path = DropPath(drop_path)
-        self.conv_branch = ELDC(hidden_dim, hidden_dim)
+        self.conv_branch = PMC(hidden_dim, hidden_dim)
         self.self_attention_cross_channel = eca_layer(channel=hidden_dim)
-        self.se = ACGM(hidden_dim)
+        self.se = APFG(hidden_dim)
 
     def forward(self, input: torch.Tensor):
 
@@ -866,9 +865,9 @@ class DownFusion(nn.Module):
         x_fused =  + x_fused
         return x_fused
 
-class MSAA(nn.Module):
+class MSK(nn.Module):
     def __init__(self, in_channels, out_channels):
-        super(MSAA, self).__init__()
+        super(MSK, self).__init__()
         self.fusion_conv = FusionConv(in_channels, out_channels)
 
     def forward(self, x1, x2, x4, last=False):
@@ -960,9 +959,9 @@ class VSSM(nn.Module):
 
         hidden_dim = int(base_dims // 4)
         self.AFFs = nn.ModuleList([            
-            MSAA(hidden_dim * 7, base_dims),
-            MSAA(hidden_dim * 7, base_dims * 2),
-            MSAA(hidden_dim * 7, base_dims * 4),
+            MSK(hidden_dim * 7, base_dims),
+            MSK(hidden_dim * 7, base_dims * 2),
+            MSK(hidden_dim * 7, base_dims * 4),
         ])
         
         
