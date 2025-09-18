@@ -833,7 +833,7 @@ class FusionConv(nn.Module):
         self.conv_5x5 = nn.Conv2d(dim, dim, kernel_size=5, stride=1, padding=2)
         self.conv_7x7 = nn.Conv2d(dim, dim, kernel_size=7, stride=1, padding=3)
         self.spatial_attention = SpatialAttentionModule()
-     #   self.channel_attention = ChannelAttentionModule(dim)
+
         self.up = nn.Conv2d(dim, out_channels, kernel_size=1, stride=1)
         self.down_2 = nn.Conv2d(in_channels, dim, kernel_size=1, stride=1)
 
@@ -841,7 +841,7 @@ class FusionConv(nn.Module):
         
         x_fused = torch.cat([x1, x2, x4], dim=1)
         x_fused = self.down(x_fused)
-      #  x_fused_c = x_fused * self.channel_attention(x_fused)
+
         x_3x3 = self.conv_3x3(x_fused)
         x_5x5 = self.conv_5x5(x_fused)
         x_7x7 = self.conv_7x7(x_fused)
