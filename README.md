@@ -1,5 +1,5 @@
 # DP-UNet
-**DP-UNet** is a deep learning framework for image segmentation, based on the U-Net architecture. The model is implemented in **PyTorch 2.6.0** with **CUDA 12.4** support, and optimized for high-performance GPU inference.
+**DP-UNet** is a deep learning framework for image segmentation, based on the U-Net architecture. The model is implemented in **PyTorch 2.5.1** with **CUDA 12.1** support, and optimized for high-performance GPU inference.
 > _Formerly known as **BiVSS-UNet**._
 ---
 The main model architectures are located in:
@@ -8,7 +8,7 @@ The main model architectures are located in:
 
 ## 🚀 Features
 
-- ⚙️ Built with **PyTorch 2.6.0 + CUDA 12.4**
+- ⚙️ Built with **PyTorch 2.5.1 + CUDA 12.1**
 - 🔁 Training pipeline with **PyTorch Lightning**
 - 🧪 Extensive support for **evaluation metrics**
 - 🧰 Modular and clean codebase for easy extension
@@ -19,20 +19,21 @@ The main model architectures are located in:
 
 ### ✅ System Summary
 
-| Item              | Info                             |
-|-------------------|----------------------------------|
-| OS                | Ubuntu                           |
-| Python            | ≥ 3.10                           |
-| PyTorch           | 2.6.0+cu124                      |
-| CUDA Available    | True                             |
-| CUDA Version      | 12.4                             |
+| Item        | Info                          |
+|-------------|-------------------------------|
+| OS          | Ubuntu                        |
+| Python      | 3.10.19                       |
+| PyTorch     | 2.5.1+cu121                   |
+| CUDA runtime| 12.1                          |
+| CUDA driver | 12.4                          |
+| GPU         | NVIDIA RTX 3090 (24GB)        |
 
 ### 📦 Key Python Packages
 
 Here are the most critical packages used:
 
-- `torch==2.6.0`
-- `torchvision==0.21.0`
+- `torch==2.5.1+cu121`
+- `torchvision==0.20.1+cu121` 
 - `pytorch-lightning==2.2.1`
 - `albumentations==1.4.2`
 - `opencv-python==4.11.0.86`
@@ -75,10 +76,10 @@ Download the pretrained weightshere:
 conda create -n DP python=3.10
 conda activate DP
 
-conda install -c nvidia cudatoolkit=12.4
-conda install -c "nvidia/label/cuda-12.4.0" cuda-nvcc
 
-pip install torch==2.6.0+cu124 torchvision==0.21.0+cu124 torchaudio==2.6.0 -f https://download.pytorch.org/whl/torch_stable.html
+
+pip install torch==2.5.1+cu121 torchvision==0.20.1+cu121 torchaudio==2.5.1 \
+-f https://download.pytorch.org/whl/torch_stable.html
 
 conda install packaging
 
