@@ -55,9 +55,6 @@ The folder contains pre-segmented images for the following datasets:
 
 -**ISPRSVaihingen**
 
-You can access and download the segmented images here:
-👉 ([Download from Google Drive](https://drive.google.com/drive/folders/1CrPBbs1I0oYRvyxqG68q5YX8l-KCLfh5?usp=sharing))
-
 ---
 
 ### ModelWeights
